@@ -1,0 +1,135 @@
+{
+  "version": 2,
+  "projects": {
+    "hangman-web": {
+      "root": "apps/hangman-web",
+      "sourceRoot": "apps/hangman-web/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/hangman-web",
+            "index": "apps/hangman-web/src/index.html",
+            "main": "apps/hangman-web/src/main.tsx",
+            "polyfills": "apps/hangman-web/src/polyfills.ts",
+            "tsConfig": "apps/hangman-web/tsconfig.app.json",
+            "assets": [
+              "apps/hangman-web/src/favicon.ico",
+              "apps/hangman-web/src/assets"
+            ],
+            "styles": [
+              "apps/hangman-web/src/styles.scss"
+            ],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/hangman-web/src/environments/environment.ts",
+                  "with": "apps/hangman-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "hangman-web:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "hangman-web:build:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/hangman-web/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/hangman-web"
+          ],
+          "options": {
+            "jestConfig": "apps/hangman-web/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "hangman-web-e2e": {
+      "root": "apps/hangman-web-e2e",
+      "sourceRoot": "apps/hangman-web-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/hangman-web-e2e/cypress.json",
+            "tsConfig": "apps/hangman-web-e2e/tsconfig.e2e.json",
+            "devServerTarget": "hangman-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "hangman-web:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/hangman-web-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "scss",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "scss"
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "hangman-web"
+}
