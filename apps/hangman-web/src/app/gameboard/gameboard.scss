@@ -1,0 +1,113 @@
+.gameboard-container {
+  margin: auto;
+  min-width: 500px;
+  background: #cbc6e3;
+  color: #fff;
+  width: 70%;
+  text-align: center;
+  padding: 20px 20px;
+
+  .title {
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    h1 {
+      color: #fff;
+      text-transform: uppercase;
+    }
+  }
+
+  .playground {
+    .visual {
+      &-ground {
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .timer {
+          background: #6c6a77 !important;
+          padding: 10px 20px;
+          cursor: none;
+          font-size: 30px;
+        }
+        .refresh,
+        .timer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border: 0;
+          background: #7186aa;
+          border-radius: 5px;
+          padding: 5px;
+          color: #fff;
+          cursor: pointer;
+        }
+        .hang-container {
+          width: 70%;
+          max-width: 400px;
+          padding: 20px 50px;
+        }
+      }
+      &-question {
+        margin: 20px;
+      }
+      &-inputs {
+        margin: 20px;
+        .input-item {
+          line-height: 20px;
+          margin: 0px 5px;
+          font-size: 20px;
+        }
+      }
+      &-response {
+        font-size: 20px;
+        margin: 20px auto;
+        .success {
+          color: green;
+        }
+        .failed {
+          color: red;
+        }
+      }
+    }
+
+    .visual-keyboard {
+      width: 25%;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      flex-basis: 1;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex-flow: row wrap;
+      align-items: center;
+      .keyboard-key {
+        align-self: center;
+        justify-self: center;
+        border-radius: 5px;
+        background: rgb(127, 127, 228);
+        color: #fff;
+        padding: 10px;
+        border: none;
+        margin: 5px 2px;
+        width: 15%;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .gameboard-container {
+    .playground {
+      .visual {
+        &-ground {
+          flex-direction: column;
+        }
+        &-keyboard {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
